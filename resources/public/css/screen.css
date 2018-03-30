@@ -3,6 +3,13 @@ body {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     height: 100%;
 }
+div.no-select {
+    color: 'red';
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 .navbar {
   margin-bottom: 10px;
   border-radius: 0px;
@@ -66,4 +73,3 @@ body {
         transform: rotate(360deg);
     }
 }
-

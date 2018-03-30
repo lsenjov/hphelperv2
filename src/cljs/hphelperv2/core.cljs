@@ -7,7 +7,9 @@
             [markdown.core :refer [md->html]]
             [ajax.core :refer [GET POST]]
             [hphelperv2.ajax :refer [load-interceptors!]]
-            [hphelperv2.events])
+            [hphelperv2.events]
+            [hphelperv2.components.core :as comp-core :refer [comp-draggable]]
+            )
   (:import goog.History))
 
 (defn nav-link [uri title page]
@@ -37,12 +39,17 @@
 
 (defn home-page []
   [:div.container
+   "Stuff between here"
+   (comp-draggable "Test 1" #(str "Test 1 body"))
+   (comp-draggable "Test 2" #(str "Test 2 body"))
+   "And here"
    [:div.row>div.col-sm-12
     [:h2.alert.alert-info "Tip: try pressing CTRL+H to open re-frame tracing menu"]]
    (when-let [docs @(rf/subscribe [:docs])]
-     [:div.row>div.col-sm-12
-      [:div {:dangerouslySetInnerHTML
-             {:__html (md->html docs)}}]])])
+    ;[:div.row>div.col-sm-12
+    ; [:div {:dangerouslySetInnerHTML
+    ;        {:__html (md->html docs)}}]]
+     )])
 
 (def pages
   {:home #'home-page
