@@ -4,11 +4,15 @@
   :url "http://example.com/FIXME"
 
   :dependencies [[ch.qos.logback/logback-classic "1.2.3"]
-                 [cider/cider-nrepl "0.15.1"]
-                 [clj-time "0.14.2"]
+                 [cider/cider-nrepl "0.17.0"]
+                 [clj-time "0.14.4"]
                  [cljs-ajax "0.7.3"]
-                 [compojure "1.6.0"]
+                 [compojure "1.6.1"]
+                 [com.taoensso/timbre "4.10.0"]
                  [cprop "0.1.11"]
+                 [crypto-password "0.2.0"]
+                 [differ "0.3.2"]
+                 [eu.7bridges/clj-odbp "0.3.1-SNAPSHOT"]
                  [funcool/struct "1.2.0"]
                  [luminus-nrepl "0.1.4"]
                  [luminus/ring-ttl-session "0.3.2"]
