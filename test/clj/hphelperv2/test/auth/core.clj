@@ -26,5 +26,11 @@
     ;; Now create the account
     (t/create-account "username" "password")
     ;; Now it should be able to log in
-    (is (t/login-user "username" "password"))
+    (is (t/login-user! "username" "password"))
+    (is (= (t/login-user! "username" "password")
+           (t/login-user! "username" "password"))
+        "Doesn't send the same token"
+        )
+    (is (nil? (t/revoke-email! "username")))
+    (is (t/login-user "username" "password") "Should still be able to log in")
     )) ; TODO
