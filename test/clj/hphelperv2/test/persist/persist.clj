@@ -11,6 +11,8 @@
 ; If we load this up, we're using the test database
 (intern 'hphelperv2.persist.persist 'db-name "test")
 (defn reset-database!
+  "Deletes ALL verticies from the database.
+  Defined in a test namespace so this never enters a production database"
   []
   (log/info "Resetting database, deleting all")
   (t/command "DELETE FROM V UNSAFE")

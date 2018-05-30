@@ -7,6 +7,7 @@
             [markdown.core :refer [md->html]]
             [ajax.core :refer [GET POST]]
             [hphelperv2.ajax :refer [load-interceptors!]]
+            [hphelperv2.websockets]
             [hphelperv2.events])
   (:import goog.History))
 

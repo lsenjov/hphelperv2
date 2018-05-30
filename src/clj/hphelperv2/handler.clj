@@ -7,7 +7,9 @@
             [mount.core :as mount]
             [hphelperv2.middleware :as middleware]
             [clojure.tools.logging :as log]
-            [hphelperv2.config :refer [env]]))
+            [hphelperv2.config :refer [env]]
+            [hphelperv2.websockets :as websockets]
+            ))
 
 (mount/defstate init-app
   :start ((or (:init defaults) identity))
@@ -38,6 +40,7 @@
       (-> #'home-routes
           (wrap-routes middleware/wrap-csrf)
           (wrap-routes middleware/wrap-formats))
+      websockets/websocket-routes-wrapped
       (route/not-found
         (:body
           (error-page {:status 404

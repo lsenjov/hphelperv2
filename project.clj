@@ -8,6 +8,7 @@
                  [clj-time "0.14.4"]
                  [cljs-ajax "0.7.3"]
                  [compojure "1.6.1"]
+                 [com.taoensso/sente "1.12.0"]
                  [com.taoensso/timbre "4.10.0"]
                  [cprop "0.1.11"]
                  [crypto-password "0.2.0"]
