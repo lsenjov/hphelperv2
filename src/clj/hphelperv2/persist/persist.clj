@@ -47,6 +47,12 @@
        (catch Exception e nil))
   (try (command "CREATE INDEX Login.email UNIQUE")
        (catch Exception e nil))
+
+  (ensure-class-exists "Tag")
+  (try (command "CREATE PROPERTY Tag.tag_id STRING")
+       (catch Exception e nil))
+  (try (command "CREATE INDEX Tag.tag_id UNIQUE")
+       (catch Exception e nil))
   )
 (comment
   ;; This isn't needed very often, if at all

@@ -63,6 +63,12 @@
   "Multimethod to handle Sente `event-msg`s"
   :id ; Dispatch on event-id
   )
+(defmethod -event-msg-handler
+  :chsk/ws-ping
+  [{:as ev-msg :keys [id]}]
+  (log/trace "Received ping"))
+
+
 #?(:clj
  (do
    (defmethod -event-msg-handler
@@ -90,7 +96,7 @@
      "Wraps `-event-msg-handler` with logging, error catching, etc."
      [{:as ev-msg :keys [id ?data event]}]
      (-event-msg-handler ev-msg))
-   ))
+   )) ; End #?
 
 ;; Define and start router
 (defonce router_ (atom nil))

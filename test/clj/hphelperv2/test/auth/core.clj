@@ -22,7 +22,7 @@
 (deftest test-login
   (testing "Correct logins"
     ;; Called before actually creating the account
-    (is (nil? (t/login-user "username" "password")))
+    (is (nil? (t/login-user! "username" "password")))
     ;; Now create the account
     (t/create-account "username" "password")
     ;; Now it should be able to log in
@@ -32,5 +32,5 @@
         "Doesn't send the same token"
         )
     (is (nil? (t/revoke-email! "username")))
-    (is (t/login-user "username" "password") "Should still be able to log in")
+    (is (t/login-user! "username" "password") "Should still be able to log in")
     )) ; TODO

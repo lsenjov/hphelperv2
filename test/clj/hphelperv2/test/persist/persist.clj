@@ -17,5 +17,14 @@
   (log/info "Resetting database, deleting all")
   (t/command "DELETE FROM V UNSAFE")
   )
+(defn purge-class!
+  "Drops a class.
+  Defined in a test namespace so this never enters prod"
+  [c]
+  (log/info "Dropping class: " c)
+  (t/command (str "DROP CLASS " c " UNSAFE")))
 
-(reset-database!)
+(comment
+  (reset-database!)
+  (purge-class! "Tag")
+  )
