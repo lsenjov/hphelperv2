@@ -24,6 +24,9 @@
     (defn create-tag!
       [n]
       (p/insert! {:tag_id n :_class "Tag"}))
+    (defn add-tag-to-item
+      [i t]
+      nil)
     ))
 (comment
   (find-all-tags)
@@ -31,4 +34,18 @@
   (format "SELECT * FROM Tag WHERE Tag.tag_id LIKE '%%%s%%'" "para")
   (create-tag! "paranoia")
   (create-tag! "classic")
+
+  (defn map->nsmap
+    [m n]
+    (reduce-kv (fn [acc k v]
+                 (let [new-kw (if (and (keyword? k)
+                                       (not (#{:_class :_rid} k))
+                                       (not (qualified-keyword? k)))
+                                (keyword (str n) (name k))
+                                k) ]
+                   (assoc acc new-kw v)))
+               {} m))
+  (def testa (find-single-tag "paranoia"))
+  (p/upsert! (-> testa (map->nsmap *ns*)))
+  (p/query "SELECT FROM Tag")
   )

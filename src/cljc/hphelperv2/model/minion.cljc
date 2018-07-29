@@ -10,3 +10,16 @@
              )
     )
   )
+
+#?(:clj
+  (do
+    (defn create-minion!
+      [minion]
+      (p/insert! (-> minion (assoc :_class "Minion"))))
+    (defn get-minions
+      ([]
+       (p/query (format "SELECT FROM Minion"))
+       )
+      )
+    )
+  )
